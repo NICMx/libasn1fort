@@ -282,10 +282,10 @@ Version  ::=  INTEGER  {  v1(0), v2(1), v3(2)  }
 CertificateSerialNumber  ::=  INTEGER
 
 Validity ::= SEQUENCE {
-     notBefore      Time,
-     notAfter       Time  }
+     notBefore      X509Time,
+     notAfter       X509Time  }
 
-Time ::= CHOICE {
+X509Time ::= CHOICE {
      utcTime        UTCTime,
      generalTime    GeneralizedTime }
 
@@ -318,18 +318,18 @@ TBSCertList  ::=  SEQUENCE  {
                                    -- if present, MUST be v2
      signature               AlgorithmIdentifier,
      issuer                  Name,
-     thisUpdate              Time,
-     nextUpdate              Time OPTIONAL,
+     thisUpdate              X509Time,
+     nextUpdate              X509Time OPTIONAL,
      revokedCertificates     SEQUENCE OF SEQUENCE  {
           userCertificate         CertificateSerialNumber,
-          revocationDate          Time,
+          revocationDate          X509Time,
           crlEntryExtensions      Extensions OPTIONAL
                                    -- if present, version MUST be v2
                                }  OPTIONAL,
      crlExtensions           [0] Extensions OPTIONAL }
                                    -- if present, version MUST be v2
 
--- Version, Time, CertificateSerialNumber, and Extensions were
+-- Version, X509Time, CertificateSerialNumber, and Extensions were
 -- defined earlier for use in the certificate structure
 
 AlgorithmIdentifier  ::=  SEQUENCE  {

@@ -16,7 +16,7 @@ IMPORTS
 
   -- Imports from RFC 5280 [PROFILE], Appendix A.1
         AlgorithmIdentifier, CertificateList,
-        CertificateSerialNumber, Name, Time
+        CertificateSerialNumber, Name, X509Time
            FROM PKIX1Explicit88
                 { iso(1) identified-organization(3) dod(6)
                   internet(1) security(5) mechanisms(5) pkix(7)
@@ -117,7 +117,7 @@ CMSVersion ::= INTEGER  { v0(0), v1(1), v2(2), v3(3), v4(4), v5(5) }
 
 MessageDigest ::= OCTET STRING
 
-SigningTime  ::= Time
+SigningTime  ::= X509Time
 
 Countersignature ::= SignerInfo
 
